@@ -30,7 +30,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # 'apps.accounts',
+    'apps.accounts',
 ]
 
 LOCAL_APPS = [
@@ -125,7 +125,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 # --------------------------------------------------------------USER MODEL ---------------------------------------------------------
-# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # ---------------------------------------------------- DEFAULT PRIMARY KEY FIELD TYPE -----------------------------------------------
@@ -176,7 +176,7 @@ REST_FRAMEWORK = {
     ),
     "EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
     'DEFAULT_RENDERER_CLASSES': (
-        'taskforge.custom_renderer.SuccessJsonResponse',
+        'zenCartBackend.custom_renderer.SuccessJsonResponse',
     ),
 }
 
@@ -210,9 +210,9 @@ DJOSER = {
     "ACTIVATION_URL": "activate/{uid}/{token}",
     "SEND_ACTIVATION_EMAIL": True,
     "SERIALIZERS": {
-        # "user_create": "apps.accounts.serializers.CreateUserSerializer,",
-        # "user": "apps.accounts.serializers.UserSerializer",
-        # "current_user": "apps.accounts.serializers.UserSerializer",
+        "user_create": "apps.accounts.serializers.CreateUserSerializer,",
+        "user": "apps.accounts.serializers.UserSerializer",
+        "current_user": "apps.accounts.serializers.UserSerializer",
         "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
 }
@@ -233,13 +233,13 @@ DRF_STANDARDIZED_ERRORS = {"EXCEPTION_FORMATTER_CLASS": "zenCartBackend.custom_f
 # CELERY_TASK_SERIALIZER = 'json'
 # CELERY_TIMEZONE = 'Africa/Lagos'
 
-# # EMAIL_BACKEND = 'djoser.email.backends.CeleryEmailMessage'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'timothyinioluwa@gmail.com'
-# EMAIL_HOST_PASSWORD = 'cenefgjkqhqfhmvj'
-# DEFAULT_FROM_EMAIL='timothyinioluwa@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'timothyinioluwa@gmail.com'
+EMAIL_HOST_PASSWORD = 'cenefgjkqhqfhmvj'
+DEFAULT_FROM_EMAIL='timothyinioluwa@gmail.com'
 
 
 
