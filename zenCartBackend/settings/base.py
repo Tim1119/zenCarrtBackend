@@ -31,10 +31,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'apps.accounts',
+    'apps.brands',
+    'apps.category',
+    'apps.products',
 ]
 
 LOCAL_APPS = [
-    # 'django.contrib.gis',
     'rest_framework',
     'djoser',
     'rest_framework_simplejwt',
@@ -43,6 +45,8 @@ LOCAL_APPS = [
     'phonenumber_field',
     # 'django_celery_results',
     # 'djcelery_email'
+    'django_cleanup.apps.CleanupConfig',
+    # 'imagekit',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -176,7 +180,9 @@ REST_FRAMEWORK = {
     ),
     "EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
     'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
         'zenCartBackend.custom_renderer.SuccessJsonResponse',
+        'rest_framework.renderers.JSONRenderer',
     ),
 }
 
